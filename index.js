@@ -100,7 +100,7 @@ async function run() {
   try {
   
 
-    console.log("MongoDB connected");
+
 
     const db = client.db("Ecommerce");
     const userCollection = db.collection("users");
