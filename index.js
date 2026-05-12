@@ -92,20 +92,20 @@ const client = new MongoClient(uri, {
   },
 });
 
-const db = client.db("Ecommerce");
-const userCollection = db.collection("users");
-const productCollection = db.collection("products");
-const ordersCollection = db.collection("orders");
+// const db = client.db("Ecommerce");
+// const userCollection = db.collection("users");
+// const productCollection = db.collection("products");
+// const ordersCollection = db.collection("orders");
 async function run() {
   try {
-    await client.connect();
+  
 
     console.log("MongoDB connected");
 
-    // const db = client.db("Ecommerce");
-    // const userCollection = db.collection("users");
-    // const productCollection = db.collection("products");
-    // const ordersCollection = db.collection("orders");
+    const db = client.db("Ecommerce");
+    const userCollection = db.collection("users");
+    const productCollection = db.collection("products");
+    const ordersCollection = db.collection("orders");
 
     //verifyAdmin
     const verifyAdmin = async (req, res, next) => {
@@ -546,11 +546,11 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-// if (process.env.NODE_ENV !== "production") {
-//   app.listen(port, () => {
-//     console.log(`Product server is running on port ${port}`);
-//   });
-// }
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Product server is running on port ${port}`);
+  });
+}
 
 // ✅ Always export the app for Vercel
 module.exports = app;
